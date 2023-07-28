@@ -1,0 +1,9 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    registerWithEureka: false # 服務註冊，false表示不將本消費者註冊到 Eureka 服務器
+    fetchRegistry: true # 服務發現，true從 Eureka 服務器中獲取註冊信息
+    serviceUrl:
+      defaultZone: http://eureka6001.com:6001/eureka/,http://eureka6002.com:6002/eureka/

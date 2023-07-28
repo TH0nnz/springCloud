@@ -1,0 +1,44 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路徑
+  type-aliases-package: com.example.springCloud.entities  # 所有Entity別名類所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml       # mapper映射文件
+
+
+spring:
+  application:
+    name: microservice-product #這個很重要，這在以後的服務與服務之間相互調用一般都是根據這個name
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 當前數據源操作類型
+    driver-class-name: com.mysql.cj.jdbc.Driver             # mysql驅動包
+    url: jdbc:mysql://127.0.0.1:3306/springcloud_db01?serverTimezone=GMT%2B8  # 數據庫名稱
+    username: root
+    password: '00000000'
+    dbcp2:
+      min-idle: 5                                # 數據庫連接池的最小維持連接數
+      initial-size: 5                            # 初始化連接數
+      max-total: 5                               # 最大連接數
+      max-wait-millis: 150                       # 等待連接獲取的最大超時時間
+
+eureka:
+  client:
+    registerWithEureka: true # 服務註冊開關
+    fetchRegistry: true # 服務發現開關
+    serviceUrl: # 註冊到哪一個Eureka Server服務註冊中心，多个中間用逗號分隔
+      # 單機版 Eureka 服務註冊中心
+      #defaultZone: http://localhost:6001/eureka
+      # 集群版 Eureka 服務註冊中心
+      defaultZone: http://eureka6001.com:6001/eureka,http://eureka6002.com:6002/eureka
+  instance:
+    instanceId: ${spring.application.name}:${server.port}-hystrix # 指定實例ID,就不會顯示主機名了
+    preferIpAddress: true #訪問路徑可以顯示IP
+
+# 在被監控服務上添加暴露端點 如果啟動class有配置ServletRegistrationBean 則下面就不用
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+

@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: microservice-config-application #github上的配置名稱，注意沒有yml後綴名
+      profile: prod #本次訪問的環境配置項
+      label: main #遠程庫的分支名
+      uri: http://localhost:5001 #Config配置中心地址，通過它獲取microservice-config-application.yml配置信息

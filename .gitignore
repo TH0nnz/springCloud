@@ -1,0 +1,15 @@
+# Project exclude paths
+/microservice-cloud-02-api/target/
+/microservice-cloud-03-provider-product-8001/target/
+/microservice-cloud-04-consumer-product-80/target/
+/microservice-cloud-05-eureka-6001/target/
+/microservice-cloud-05-eureka-6002/target/
+/microservice-cloud-06-provider-product-8002/target/
+/microservice-cloud-07-consumer-product-feign/target/
+/microservice-cloud-08-provider-product-hystrix-8001/target/
+/microservice-cloud-09-hystrix-dashboard-9001/target/
+/microservice-cloud-10-zuul-gateway-7001/target/
+/microservice-cloud-11-config-server-5001/target/
+/microservice-cloud-12-config-client-8080/target/
+/microservice-cloud-13-eureka-config-6001/target/
+/microservice-cloud-14-product-config-8001/target/
